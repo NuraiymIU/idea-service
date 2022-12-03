@@ -1,5 +1,6 @@
 package kg.megacom.ideaservice.controllers;
 
+import javassist.NotFoundException;
 import kg.megacom.ideaservice.models.dto.UserDto;
 import kg.megacom.ideaservice.services.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/getById")
-    public UserDto findById(@RequestParam Long id){
+    public UserDto findById(@RequestParam Long id) throws NotFoundException {
         return userService.findById(id);
     }
 }

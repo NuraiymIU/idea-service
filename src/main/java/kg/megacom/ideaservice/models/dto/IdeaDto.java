@@ -1,6 +1,5 @@
 package kg.megacom.ideaservice.models.dto;
 
-import kg.megacom.ideaservice.models.entity.User;
 import lombok.Data;
 
 @Data

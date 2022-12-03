@@ -9,7 +9,7 @@ public class UserMapperImpl implements UserMapper {
     public User userDtoToUser(UserDto userDto) {
         User user = new User();
         if(userDto.getId() != null){
-        user.setId(userDto.getId());
+            user.setId(userDto.getId());
         }
         user.setName(userDto.getName());
         user.setPhone(userDto.getPhone());
