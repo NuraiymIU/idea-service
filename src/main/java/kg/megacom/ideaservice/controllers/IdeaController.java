@@ -2,6 +2,7 @@ package kg.megacom.ideaservice.controllers;
 
 import javassist.NotFoundException;
 import kg.megacom.ideaservice.models.dto.IdeaDto;
+import kg.megacom.ideaservice.models.response.ResponseDto;
 import kg.megacom.ideaservice.services.IdeaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,13 +18,18 @@ public class IdeaController {
     }
 
     @PostMapping("/save")
-    public IdeaDto saveIdea(@RequestBody IdeaDto ideaDto){
+    public ResponseDto saveIdea(@RequestBody IdeaDto ideaDto) {
         return ideaService.save(ideaDto);
     }
 
     @GetMapping("/findUserIdeas/{usersId}")
     public List<IdeaDto> findByUserId(@PathVariable Long usersId) throws NotFoundException {
         return ideaService.findAllIdeasByUserId(usersId);
+    }
+
+    @GetMapping("/getUserIdeas")
+    public List<IdeaDto> getAllUserIdeas(@RequestParam String phone) {
+        return ideaService.getIdeasByPhone(phone);
     }
 
 }

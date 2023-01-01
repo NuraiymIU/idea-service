@@ -11,10 +11,10 @@ public class IdeaMapperImpl implements IdeaMapper {
     public Idea ideaDtoToIdea(IdeaDto ideaDto) {
 
         Idea idea = new Idea();
-        User user = UserMapper.INSTANCE.userDtoToUser(ideaDto.getUser());
+        //User user = UserMapper.INSTANCE.userDtoToUser(ideaDto.getUser());
         idea.setDescription(ideaDto.getDescription());
         idea.setFeedback(ideaDto.isFeedback());
-        idea.setUser(user);
+        //idea.setUser(user);
         if(ideaDto.getId()!= null){
             idea.setId(ideaDto.getId());
         }
@@ -27,7 +27,7 @@ public class IdeaMapperImpl implements IdeaMapper {
         ideaDto.setId(idea.getId());
         ideaDto.setDescription(idea.getDescription());
         ideaDto.setFeedback(idea.isFeedback());
-        ideaDto.setUser(UserMapper.INSTANCE.userToUserDto(idea.getUser()));
+        //ideaDto.setUser(UserMapper.INSTANCE.userToUserDto(idea.getUser()));
         return ideaDto;
     }
 }

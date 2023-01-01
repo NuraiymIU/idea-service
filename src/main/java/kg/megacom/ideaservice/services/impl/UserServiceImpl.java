@@ -14,11 +14,16 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
 
-    public UserServiceImpl(UserRepo userRepo){
+    public UserServiceImpl(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
+
     @Override
     public UserDto save(UserDto userDto) {
+        Optional<User> savedUser = userRepo.findByPhone(userDto.getPhone());
+        if(savedUser.isPresent()) {
+            return UserMapper.INSTANCE.userToUserDto(savedUser.get());
+        }
         User user = UserMapper.INSTANCE.userDtoToUser(userDto);
         user = userRepo.save(user);
 
